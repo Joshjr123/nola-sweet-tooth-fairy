@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — NOLA Sweet Tooth Fairy</title>
+  <meta name="description" content="Reach NOLA Sweet Tooth Fairy in New Orleans East — phone, email, hours and contact form." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/site.js" defer></script>
+</head>
+
+<body>
+  <header data-nav></header>
+
+  <!-- HEADER -->
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">We'd love to hear from you</div>
+      <h1>Get In Touch</h1>
+      <p>Questions, custom orders, or just want to say hi? Reach out any way you like.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section" style="padding-top:8px;">
+    <div class="wrap order-grid">
+
+      <!-- CONTACT INFO -->
+      <div class="panel">
+        <h2>Reach Us</h2>
+
+        <div class="field">
+          <label>Phone</label>
+          <p style="margin:0;">
+            <a href="tel:+15043541704" style="text-decoration:none;color:var(--pink);font-weight:700;">
+              (504)-354-1704
+            </a>
+          </p>
+        </div>
+
+        <div class="field">
+          <label>Email</label>
+          <p style="margin:0;">
+            <a href="mailto:nolasweettoothfairy@gmail.com" style="text-decoration:none;color:var(--pink);font-weight:700;">
+              nolasweettoothfairy@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <div class="field">
+          <label>Location</label>
+          <p style="margin:0;">9301 Lake Forest Blvd Ste 113, New Orleans, LA</p>
+        </div>
+
+        <div class="field">
+          <label>Business Hours</label>
+          <p style="margin:0;">Monday — Closed<br>Tue–Sun — 10:00a – 6:00p</p>
+        </div>
+
+        <!-- SOCIALS -->
+        <h3 style="margin-top:18px;">Follow the Fairy</h3>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-sm"
+             href="https://www.instagram.com/nola.sweettoothfairy/"
+             target="_blank"
+             rel="noopener noreferrer">
+            Instagram
+          </a>
+
+          <a class="btn btn-choc btn-sm"
+             href="https://www.facebook.com/profile.php?id=61557715193801"
+             target="_blank"
+             rel="noopener noreferrer">
+            Facebook
+          </a>
+
+          <a class="btn btn-gold btn-sm"
+             href="https://www.tiktok.com/@nola.sweettoothfairy"
+             target="_blank"
+             rel="noopener noreferrer">
+            TikTok
+          </a>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="panel">
+        <h2>Send a Message</h2>
+
+        <!-- NETLIFY SAFE FORM -->
+        <form name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field">
+
+          <!-- REQUIRED FOR NETLIFY -->
+          <input type="hidden" name="form-name" value="contact" />
+
+          <!-- HONEYPOT (SPAM PROTECTION) -->
+          <p style="display:none;">
+            <label>
+              Don't fill this out if you're human:
+              <input name="bot-field" />
+            </label>
+          </p>
+
+          <div class="field">
+            <label for="cname">Name</label>
+            <input id="cname"
+                   name="name"
+                   type="text"
+                   autocomplete="name"
+                   required />
+          </div>
+
+          <div class="field">
+            <label for="cemail">Email</label>
+            <input id="cemail"
+                   name="email"
+                   type="email"
+                   autocomplete="email"
+                   required />
+          </div>
+
+          <div class="field">
+            <label for="cphone">Phone</label>
+            <input id="cphone"
+                   name="phone"
+                   type="tel"
+                   autocomplete="tel" />
+          </div>
+
+          <div class="field">
+            <label for="cmsg">Message</label>
+            <textarea id="cmsg"
+                      name="message"
+                      autocomplete="off"
+                      required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            Send Message
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <footer data-footer></footer>
+</body>
+</html>
