@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — NOLA Sweet Tooth Fairy</title>
+  <meta name="description" content="A look at NOLA Sweet Tooth Fairy cakes, cookie skillets, cupcakes and event dessert setups." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/site.js" defer></script>
+</head>
+
+<body>
+  <header data-nav></header>
+
+  <!-- HEADER -->
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">Made by hand, styled with love</div>
+      <h1>The Sweet Gallery</h1>
+      <p>A peek at what we've baked up — from cozy cookie skillets to full event dessert tables across New Orleans.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" style="padding-top:8px;">
+    <div class="wrap">
+
+      <!-- FILTERS -->
+      <div class="gallery-filter" id="galleryFilter">
+        <button class="active" data-f="all" aria-pressed="true">All</button>
+        <button data-f="cakes">Cakes</button>
+        <button data-f="skillets">Cookie Skillets</button>
+        <button data-f="cupcakes">Cupcakes</button>
+        <button data-f="events">Event Setups</button>
+      </div>
+
+      <!-- GRID -->
+      <div class="masonry" id="masonry">
+
+        <figure data-cat="events">
+          <img src="assets/media/image0.jpeg" alt="Dessert spread" loading="lazy">
+          <figcaption>Signature dessert spread</figcaption>
+        </figure>
+
+        <figure data-cat="cakes">
+          <img src="assets/media/image2.jpeg" alt="Decorated cake" loading="lazy">
+          <figcaption>Custom celebration cake</figcaption>
+        </figure>
+
+        <figure data-cat="cupcakes">
+          <img src="assets/media/image1.jpeg" alt="Cupcakes" loading="lazy">
+          <figcaption>Frosting-piled cupcakes</figcaption>
+        </figure>
+
+        <figure data-cat="skillets">
+          <img src="assets/media/image4.jpeg" alt="Cookie skillet" loading="lazy">
+          <figcaption>Warm signature cookie skillet</figcaption>
+        </figure>
+
+        <!-- VIDEO FIXED (MP4 SAFE + FALLBACK) -->
+        <figure data-cat="events">
+          <video controls playsinline preload="metadata">
+            <source src="assets/media/video.mp4" type="video/mp4" />
+            <source src="assets/media/video.mov" type="video/quicktime" />
+            Your browser does not support video playback.
+          </video>
+          <figcaption>Behind the counter</figcaption>
+        </figure>
+
+        <figure data-cat="skillets">
+          <video controls playsinline preload="metadata">
+            <source src="assets/media/video_1.mp4" type="video/mp4" />
+            <source src="assets/media/video_1.mov" type="video/quicktime" />
+            Your browser does not support video playback.
+          </video>
+          <figcaption>Skillet, fresh from the oven</figcaption>
+        </figure>
+
+        <!-- PLACEHOLDER CARDS -->
+        <figure data-cat="cakes" style="background:linear-gradient(135deg,#ff8fc2,#ff69b4);">
+          <div style="aspect-ratio:1;display:grid;place-items:center;color:#fff;font-family:var(--display);font-size:1.2rem;">
+            Mini Cakes
+          </div>
+          <figcaption>Cookie butter & triple chocolate</figcaption>
+        </figure>
+
+        <figure data-cat="cupcakes" style="background:linear-gradient(135deg,#ffe066,#ffd700);">
+          <div style="aspect-ratio:1;display:grid;place-items:center;color:#5c4033;font-family:var(--display);font-size:1.2rem;">
+            Dozen Box
+          </div>
+          <figcaption>Strawberry, vanilla & chocolate</figcaption>
+        </figure>
+
+        <figure data-cat="events" style="background:linear-gradient(135deg,#7a564a,#5c4033);">
+          <div style="aspect-ratio:1;display:grid;place-items:center;color:#fff5e6;font-family:var(--display);font-size:1.2rem;">
+            Wedding Table
+          </div>
+          <figcaption>Styled dessert table for 120</figcaption>
+        </figure>
+
+        <figure data-cat="skillets" style="background:linear-gradient(135deg,#e0a060,#5c4033);">
+          <div style="aspect-ratio:1;display:grid;place-items:center;color:#fff5e6;font-family:var(--display);font-size:1.2rem;">
+            Nutella Skillet
+          </div>
+          <figcaption>Deep-dish, gooey center</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <footer data-footer></footer>
+
+  <!-- SAFE + OPTIMIZED FILTER SCRIPT -->
+  <script>
+    (function () {
+      var filterWrap = document.getElementById('galleryFilter');
+      var figures = Array.prototype.slice.call(document.querySelectorAll('#masonry figure'));
+
+      function setActive(btn) {
+        filterWrap.querySelectorAll('button').forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+      }
+
+      function findButton(target) {
+        var el = target;
+        while (el && el.tagName !== 'BUTTON') {
+          el = el.parentElement;
+        }
+        return el;
+      }
+
+      filterWrap.addEventListener('click', function (e) {
+        var btn = findButton(e.target);
+        if (!btn) return;
+
+        setActive(btn);
+
+        var filter = btn.dataset.f;
+
+        figures.forEach(function (fig) {
+          var match = (filter === 'all' || fig.dataset.cat === filter);
+
+          fig.classList.toggle('hidden', !match);
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
