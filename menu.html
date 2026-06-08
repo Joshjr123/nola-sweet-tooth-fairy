@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu — NOLA Sweet Tooth Fairy</title>
+  <meta name="description" content="Cookies, skillets, brownies, cupcakes, pancakes, cones, milkshakes and more. Browse the full NOLA Sweet Tooth Fairy menu and add to your order." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+  <header data-nav></header>
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">Tap a category to peek inside</div>
+      <h1>The Full Sweet Menu</h1>
+      <p>
+        Everything is made by hand and priced individually.
+        Add favorites straight to your order, or choose <strong>Custom Item</strong> in any category to design something all your own.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:10px;">
+    <div class="wrap">
+      <div class="menu-cats" id="menuCats"></div>
+    </div>
+  </section>
+
+  <footer data-footer></footer>
+
+  <script>
+    var MENU = [
+      { cat: 'Cookies', blurb: '15 gourmet flavors', items: [
+        ['Strawberry Cookie',5.21],['Cookies & Cream Cookie',5.21],['Banana Pudding Cookie',5.21],['Red Velvet Cookie',5.21],
+        ['Lemon Cookie',5.21],['Blueberry Cookie',5.21],['White Chocolate Cookie',5.21],['Chantilly Cookie',5.21],
+        ['Pistachio Cookie',5.21],['M & M Cookie',5.21],["S'mores Cookie",5.21],['Peanut Butter Cookie',5.21],
+        ['Oatmeal Raisin Cookie',5.21],['White Chocolate Macadamia Cookie',5.21],['Fruity Pebble Cookie',5.21],['__CUSTOM__']
+      ]},
+
+      { cat: 'Pastries', items: [
+        ['Chewy Fudge Brownie',5.21],['Turtle Brownie',6.25],['Praline Brownie',6.25],['Twisted Brownie',6.25],
+        ['Ooey Gooey Butter Cake',6.25],['Strawberry Ooey Gooey Butter Cake',6.25],['Strawberry Trifle',8.33],
+        ['Peach Cobbler',8.33],['Med King Cake',26.04],['__CUSTOM__']
+      ]},
+
+      { cat: 'Morning Pastries', items: [ ['__CUSTOM__'] ]},
+
+      { cat: 'Pies', items: [
+        ['Mini Sweet Potato Pie',3.13],['Mini Praline Sweet Potato Cheesecake',4.17],['Mini Pecan Pie',4.17],['__CUSTOM__']
+      ]},
+
+      { cat: 'Poundcakes', items: [
+        ['Lemon Poundcake',6.25],['Peach Cobbler Poundcake',6.25],['__CUSTOM__']
+      ]},
+
+      { cat: 'Puddings', items: [
+        ['Banana Pudding',8.33],['Banana Pudding with Strawberries',10.42],['Strawberry Banana Pudding',10.42],
+        ['Cookies & Cream Pudding',8.33],['White Chocolate Bread Pudding',8.33],['__CUSTOM__']
+      ]},
+
+      { cat: 'Pralines', items: [
+        ['Original Praline',3.13],['Banana Praline Bites',15.63],['Coconut Praline Bites',15.63],
+        ['Wedding Cake Praline Bites',15.63],['Original Praline Bites',15.63],['__CUSTOM__']
+      ]},
+
+      { cat: 'Cookie Skillets', items: [
+        ['Cookies & Cream Skillet',10.42],['Cookie Butter',10.42],['Nutella Skillet',10.42],['Blonde Skillet',10.42],['__CUSTOM__']
+      ]},
+
+      { cat: 'Mini Cakes', items: [
+        ['Cookie Butter',7.29],['Cookies & Cream',7.29],['Red Velvet',7.29],['Triple Chocolate',7.29],
+        ['Fairy Delight',7.29],['Strawberry Cream',7.29],['__CUSTOM__']
+      ]},
+
+      { cat: 'Cupcakes', items: [
+        ['Single Cupcake',3.13],['Half Dozen Cupcakes',18.75],['Dozen Cupcakes',37.50],['__CUSTOM__']
+      ]},
+
+      { cat: 'French Toast', items: [
+        ['Strawberry Cheesecake French Toast',10.42],['Cookies & Cream French Toast',10.42],['Cookie Butter French Toast',10.42],
+        ['Strawberry Banana French Toast',10.42],['Banana Foster French Toast',10.42],['Nutella French Toast',10.42],['__CUSTOM__']
+      ]},
+
+      { cat: 'Pancakes', items: [
+        ['Taco Trio',12.50],['Mini Pancakes',10.42],['Banana Foster Pancakes',10.42],['Strawberry Cream Cheese Pancakes',10.42],
+        ['Chantilly Pancakes',10.42],['Sweet & Decadent Pancakes',10.42],['__CUSTOM__']
+      ]},
+
+      { cat: 'Waffles', items: [
+        ['Waffle (1) Topping',5.21],['Waffle (2) Toppings',5.73],['Waffle (3) Toppings',6.25],['__CUSTOM__']
+      ]},
+
+      { cat: 'Ice Cream', items: [
+        ['Ice Cream (1) Scoop',5.13],['Ice Cream (2) Scoops',5.73],['Ice Cream (3) Scoops',7.29],['__CUSTOM__']
+      ]},
+
+      { cat: 'Sundaes', items: [ ['__CUSTOM__'] ]},
+
+      { cat: 'Cones', items: [
+        ['Cake Cone',1.04],['Sugar Cone',1.30],['Waffle Cone',1.56],['Waffle Bowl',2.08],['Bubble Waffle Cone',3.13],
+        ['Cookies & Cream Cone',10.42],['Strawberry Crunch Cone',10.42],['Turtle Cone',10.42],['Fruity Pebble Cone',10.42],
+        ['Banana Pudding Cone',10.42],['Cookie Butter Cone',10.42],['__CUSTOM__']
+      ]},
+
+      /* ---- Milkshakes LEFT UNTOUCHED (as requested) ---- */
+      { cat: 'Milkshakes', items: [ ['Milkshakes',6.77],['__CUSTOM__'] ]},
+
+      { cat: 'Candy Apples', items: [ ['Candy Apple',4.17],['__CUSTOM__'] ]},
+
+      { cat: '$5 Fridays', items: [ ['$5 Friday',5.21],['__CUSTOM__'] ]},
+
+      { cat: 'Salads', items: [
+        ['Chef Salad',10.42],['Shrimp Salad',12.50],['Chicken Caesar Salad',10.42],['Small Tuna Salad',6.25],
+        ['Tuna Salad',10.42],['Fruit Salad',5.21],['__CUSTOM__']
+      ]},
+
+      { cat: 'Fresh Fruit & Toppings', items: [
+        ['Fresh Strawberries',1.56],['Fresh Banana Slices',1.56],['Fresh Strawberry Glaze',2.08],
+        ['Chocolate Covered Strawberries',10.42],['__CUSTOM__']
+      ]},
+
+      { cat: 'Toppings', items: [
+        ['Cinnamon Roll Bites',1.04],['Nilla Wafers',1.04],['Pecan Pieces',1.04],['Oreo Pieces',1.04],['Pistachio Pieces',1.04],
+        ['Walnut Pieces',1.04],['Sprinkles',1.04],['Gummy Bears',1.04],['Gummy Worms',1.04],["Reese's Pieces",1.04],
+        ['M & M',1.04],['Peanuts',1.04],['Whipped Cream',1.04],['Chocolate Chips',1.04],['Cherry',1.04],
+        ['Powdered Sugar',0.52],['Fruity Pebbles',1.04],['__CUSTOM__']
+      ]},
+
+      { cat: 'Sauces & Syrups', items: [
+        ['Caramel',1.04],['Chocolate',1.04],['White Chocolate',1.04],['Strawberry',1.04],
+        ['Butter Syrup',0.52],['Condensed Milk',1.04],['__CUSTOM__']
+      ]},
+
+      { cat: 'Drinks', items: [
+        ['Coke',2.08],['Sprite',2.08],['Orange Juice',3.13],['Cranberry Juice',3.13],['Apple Juice',3.13],
+        ['Water',1.04],['Coffee',2.08],['__CUSTOM__']
+      ]},
+
+      { cat: 'Extras', items: [ ['__CUSTOM__'] ]}
+    ];
+
+    function esc(s){
+      return String(s)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/"/g,'&quot;');
+    }
+
+    function money(n){ return '$' + Number(n).toFixed(2); }
+
+    var wrap = document.getElementById('menuCats');
+    var itemCounts = {}; // Track quantity for each item
+
+    MENU.forEach(function (c) {
+      var rows = c.items.map(function (it) {
+
+        if (it[0] === '__CUSTOM__') {
+          var url = 'custom.html?from=menu&cat=' + encodeURIComponent(c.cat);
+          return `
+            <div class="menu-item custom">
+              <span class="mi-name">Custom Item</span>
+              <span class="mi-price">Custom</span>
+              <a class="btn btn-choc btn-sm" href="${url}">Build it →</a>
+            </div>
+          `;
+        }
+
+        var itemKey = esc(it[0]) + '-' + Number(it[1]);
+
+        return `
+          <div class="menu-item" data-item-key="${itemKey}">
+            <span class="mi-name">${esc(it[0])}</span>
+            <span class="mi-price">${money(it[1])}</span>
+            <div class="item-controls" style="display:none;">
+              <button class="btn btn-sm btn-minus">−</button>
+              <span class="item-count">1</span>
+              <button class="btn btn-sm btn-plus">+</button>
+              <button class="btn btn-sm btn-remove">Remove</button>
+            </div>
+            <button class="btn btn-primary btn-sm btn-add"
+              data-name="${esc(it[0])}"
+              data-price="${Number(it[1])}"
+              data-cat="${esc(c.cat)}">
+              Add
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      var d = document.createElement('details');
+      d.className = 'menu-cat';
+      d.innerHTML =
+        `<summary>
+          <span><span class="arrow">+</span> ${esc(c.cat)}</span>
+          ${c.blurb ? `<span class="blurb">${esc(c.blurb)}</span>` : ''}
+        </summary>
+        <div class="menu-items">${rows}</div>`;
+
+      // Update arrow on toggle
+      d.addEventListener('toggle', function () {
+        var arrow = d.querySelector('.arrow');
+        arrow.textContent = d.open ? '−' : '+';
+      });
+
+      wrap.appendChild(d);
+    });
+
+    wrap.addEventListener('click', function (e) {
+      var addBtn = e.target.closest('button.btn-add');
+      if (addBtn) {
+        var item = addBtn.closest('.menu-item');
+        var itemKey = item.dataset.itemKey;
+        var controls = item.querySelector('.item-controls');
+        var count = item.querySelector('.item-count');
+
+        // Initialize counter if first time
+        if (!itemCounts[itemKey]) {
+          itemCounts[itemKey] = 1;
+        }
+
+        // Show controls, hide add button
+        addBtn.style.display = 'none';
+        controls.style.display = 'flex';
+        count.textContent = itemCounts[itemKey];
+
+        // Add to cart
+        window.Cart.add(addBtn.dataset.name, addBtn.dataset.price, addBtn.dataset.cat);
+        window.toast(addBtn.dataset.name + ' added to your order');
+      }
+
+      // Plus button
+      var plusBtn = e.target.closest('button.btn-plus');
+      if (plusBtn) {
+        var item = plusBtn.closest('.menu-item');
+        var itemKey = item.dataset.itemKey;
+        var count = item.querySelector('.item-count');
+
+        itemCounts[itemKey]++;
+        count.textContent = itemCounts[itemKey];
+
+        // Add another to cart
+        var addBtn = item.querySelector('button.btn-add');
+        window.Cart.add(addBtn.dataset.name, addBtn.dataset.price, addBtn.dataset.cat);
+        window.toast(addBtn.dataset.name + ' added to your order');
+      }
+
+      // Minus button
+      var minusBtn = e.target.closest('button.btn-minus');
+      if (minusBtn) {
+        var item = minusBtn.closest('.menu-item');
+        var itemKey = item.dataset.itemKey;
+        var count = item.querySelector('.item-count');
+
+        if (itemCounts[itemKey] > 1) {
+          itemCounts[itemKey]--;
+          count.textContent = itemCounts[itemKey];
+
+          // Remove one from cart
+          var addBtn = item.querySelector('button.btn-add');
+          window.Cart.remove(addBtn.dataset.name);
+          window.toast(addBtn.dataset.name + ' removed from your order');
+        }
+      }
+
+      // Remove button
+      var removeBtn = e.target.closest('button.btn-remove');
+      if (removeBtn) {
+        var item = removeBtn.closest('.menu-item');
+        var itemKey = item.dataset.itemKey;
+        var controls = item.querySelector('.item-controls');
+        var addBtn = item.querySelector('button.btn-add');
+        var count = item.querySelector('.item-count');
+
+        // Remove all from cart
+        var qty = itemCounts[itemKey] || 1;
+        for (var i = 0; i < qty; i++) {
+          window.Cart.remove(addBtn.dataset.name);
+        }
+
+        // Reset
+        itemCounts[itemKey] = 0;
+        count.textContent = '1';
+        controls.style.display = 'none';
+        addBtn.style.display = 'block';
+        window.toast(addBtn.dataset.name + ' removed from your order');
+      }
+    });
+  </script>
+
+  <style>
+    .item-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .item-count {
+      min-width: 30px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .btn-minus, .btn-plus, .btn-remove {
+      padding: 4px 8px;
+      font-size: 14px;
+    }
+  </style>
+</body>
+</html>
