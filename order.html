@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Online — NOLA Sweet Tooth Fairy</title>
+  <meta name="description" content="Review your cart, schedule pickup or delivery, and check out securely with NOLA Sweet Tooth Fairy." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+  <header data-nav></header>
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">Almost time to treat yourself</div>
+      <h1>Your Order</h1>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:8px;">
+    <div class="wrap order-grid">
+
+      <!-- CART -->
+      <div class="panel">
+        <h2>Cart</h2>
+        <div id="cartList"></div>
+        <a href="menu.html" class="btn btn-ghost btn-sm mt-2">+ Add more treats</a>
+
+        <div style="margin-top:24px;">
+          <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+          <div class="summary-row"><span>Tax (9.45%)</span><span id="tax">$0.00</span></div>
+          <div class="summary-row total"><span>Total</span><span id="total">$0.00</span></div>
+        </div>
+      </div>
+
+      <!-- CHECKOUT -->
+      <div class="panel">
+        <h2>Checkout Details</h2>
+
+        <div class="field">
+          <label>How would you like it?</label>
+          <div class="fulfil">
+            <input type="radio" id="fPickup" name="fulfil" value="pickup" checked>
+            <label for="fPickup" class="sel">Pickup</label>
+
+            <input type="radio" id="fDelivery" name="fulfil" value="delivery">
+            <label for="fDelivery">Delivery</label>
+          </div>
+        </div>
+
+        <div id="pickupBlock">
+          <p class="note">Pickup at 9301 Lake Forest Blvd Ste 113, New Orleans, LA.</p>
+          <div class="grid-2">
+            <div class="field">
+              <label for="pDate">Pickup date</label>
+              <input id="pDate" type="date">
+            </div>
+            <div class="field">
+              <label for="pTime">Pickup time</label>
+              <select id="pTime"></select>
+            </div>
+          </div>
+        </div>
+
+        <div id="deliveryBlock" class="hidden">
+          <p class="note">Delivery via DoorDash tracking.</p>
+        </div>
+
+        <h3>Payment</h3>
+
+        <div class="field">
+          <label>Card number</label>
+          <input id="cardNum" placeholder="1234 5678 9012 3456" />
+        </div>
+
+        <button id="placeOrder" class="btn btn-primary" style="width:100%;">
+          Place Secure Order
+        </button>
+
+        <p class="note text-center" style="margin-top:10px;">
+          Demo checkout — no real charges processed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer data-footer></footer>
+
+  <script>
+    var TAX_RATE = 0.0945;
+    function money(n){ return '$' + Number(n || 0).toFixed(2); }
+
+    // ---- safe cart fallback ----
+    function safeCart(){
+      try { return window.Cart ? window.Cart.get() : []; }
+      catch(e){ return []; }
+    }
+
+    // ---- time slots ----
+    (function(){
+      var sel = document.getElementById('pTime');
+      for (var m = 10*60; m <= 18*60; m += 30) {
+        var h = Math.floor(m/60), min = m % 60;
+        var ampm = h < 12 ? 'AM' : 'PM';
+        var hh = h % 12 || 12;
+        var label = hh + ':' + String(min).padStart(2,'0') + ' ' + ampm;
+        var o = document.createElement('option');
+        o.value = label;
+        o.textContent = label;
+        sel.appendChild(o);
+      }
+    })();
+
+    // ---- fulfillment toggle ----
+    var pickupBlock = document.getElementById('pickupBlock');
+    var deliveryBlock = document.getElementById('deliveryBlock');
+    var placeBtn = document.getElementById('placeOrder');
+
+    function syncFulfil(){
+      var delivery = document.getElementById('fDelivery').checked;
+      pickupBlock.classList.toggle('hidden', delivery);
+      deliveryBlock.classList.toggle('hidden', !delivery);
+      placeBtn.textContent = delivery
+        ? 'Place Secure Order & Track on DoorDash'
+        : 'Place Secure Order';
+    }
+
+    document.getElementById('fPickup').addEventListener('change', syncFulfil);
+    document.getElementById('fDelivery').addEventListener('change', syncFulfil);
+
+    // ---- render cart ----
+    function render(){
+      var items = safeCart();
+      var list = document.getElementById('cartList');
+
+      if (!items.length) {
+        list.innerHTML = '<p>Your cart is empty.</p>';
+        document.getElementById('subtotal').textContent = money(0);
+        document.getElementById('tax').textContent = money(0);
+        document.getElementById('total').textContent = money(0);
+        return;
+      }
+
+      var sub = 0;
+
+      list.innerHTML = items.map(function(it, i){
+        var price = Number(it.price || 0);
+        sub += price * (it.qty || 1);
+
+        return `
+          <div class="cart-item">
+            <div style="flex:1">
+              <div class="ci-name">${it.name}</div>
+              ${it.meta ? `<div class="ci-meta">${it.meta}</div>` : ''}
+              <button data-rm="${i}">Remove</button>
+            </div>
+
+            <div class="qty">
+              <button data-dec="${i}">−</button>
+              <span>${it.qty}</span>
+              <button data-inc="${i}">+</button>
+            </div>
+
+            <div class="ci-price">${money(price * it.qty)}</div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('subtotal').textContent = money(sub);
+      document.getElementById('tax').textContent = money(sub * TAX_RATE);
+      document.getElementById('total').textContent = money(sub * (1 + TAX_RATE));
+    }
+
+    document.getElementById('cartList').addEventListener('click', function(e){
+      var items = safeCart();
+
+      var inc = e.target.dataset.inc;
+      var dec = e.target.dataset.dec;
+      var rm  = e.target.dataset.rm;
+
+      if (inc !== undefined) items[Number(inc)].qty++;
+      else if (dec !== undefined) {
+        var i = Number(dec);
+        items[i].qty--;
+        if (items[i].qty < 1) items.splice(i,1);
+      }
+      else if (rm !== undefined) items.splice(Number(rm),1);
+      else return;
+
+      window.Cart.save(items);
+      render();
+    });
+
+    // ---- place order ----
+    placeBtn.addEventListener('click', function(){
+      var items = safeCart();
+      if (!items.length) return window.toast('Cart is empty');
+
+      var card = document.getElementById('cardNum').value.replace(/\s/g,'');
+      if (card.length < 12) return window.toast('Enter valid card number');
+
+      if (document.getElementById('fDelivery').checked) {
+        window.toast('Redirecting to DoorDash...');
+        setTimeout(function(){
+          window.open(window.STF.doordash, '_blank');
+        }, 600);
+      } else {
+        window.toast('Pickup order confirmed!');
+      }
+
+      window.Cart.save([]);
+      render();
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+      syncFulfil();
+      render();
+    });
+  </script>
+</body>
+</html>
