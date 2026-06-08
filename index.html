@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOLA Sweet Tooth Fairy — Sprinkling Sweetness Across New Orleans</title>
+  <meta name="description" content="Handmade gourmet cookies, signature cookie skillets, cupcakes and custom dessert tables in New Orleans. Order online for pickup or delivery." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/site.js" defer></script>
+</head>
+
+<body>
+  <header data-nav></header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Welcome, sugar</div>
+
+        <p class="slogan">
+          Sprinkling Sweetness Across New Orleans, One Treat at a Time!
+        </p>
+
+        <p class="lede">
+          Warm cookie skillets, brown-butter cookies, fluffy cupcakes and show-stopping dessert tables — all scooped, baked and finished by hand the morning you get them.
+        </p>
+
+        <div class="hero-cta">
+          <a href="order.html" class="btn btn-primary">Order Now</a>
+          <a href="menu.html" class="btn btn-ghost">See the Menu</a>
+        </div>
+
+        <div class="bestsellers">
+          <span class="chip">Signature Cookie Skillet</span>
+          <span class="chip">Banana Pudding Cookie</span>
+          <span class="chip">Strawberry Crunch Cone</span>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="assets/media/image0.jpeg" alt="Signature NOLA Sweet Tooth Fairy desserts" loading="lazy" />
+        <div class="hero-badge">Baked fresh<br>this morning</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED TREATS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div class="eyebrow">Crowd favorites</div>
+        <h2>Featured Treats</h2>
+      </div>
+
+      <div class="treat-grid">
+        <div class="treat">
+          <svg class="ic" viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="#5c4033"/></svg>
+          <h3>Cookie Skillet</h3>
+          <p>Deep-dish, gooey-centered and meant for sharing — straight from the oven.</p>
+        </div>
+
+        <div class="treat">
+          <svg class="ic" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#e0a060"/></svg>
+          <h3>Gourmet Cookies</h3>
+          <p>Fifteen rotating flavors, from Banana Pudding to Chantilly to S'mores.</p>
+        </div>
+
+        <div class="treat">
+          <svg class="ic" viewBox="0 0 64 64"><rect x="14" y="20" width="36" height="26" rx="5" fill="#5c4033"/></svg>
+          <h3>Brownies</h3>
+          <p>Chewy fudge, turtle, praline and twisted — thick, rich and a little wild.</p>
+        </div>
+
+        <div class="treat">
+          <svg class="ic" viewBox="0 0 64 64"><path d="M18 30h28l-4 20H22z" fill="#ff69b4"/></svg>
+          <h3>Cupcakes</h3>
+          <p>Single, half-dozen or a full dozen in rotating, frosting-piled flavors.</p>
+        </div>
+
+        <div class="treat">
+          <svg class="ic" viewBox="0 0 64 64"><path d="M16 40c4-10 12-16 16-16s12 6 16 16z" fill="#ff8fc2"/></svg>
+          <h3>Seasonal Desserts</h3>
+          <p>King cake in Carnival, candy apples in fall — there's always something new.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-2">
+        <a href="menu.html" class="btn btn-choc">Explore the Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div class="eyebrow">Love letters</div>
+        <h2>Sweet Words From Our Neighbors</h2>
+      </div>
+
+      <div class="reviews">
+        <button class="rev-arrow prev" aria-label="Previous review">←</button>
+
+        <div class="review-viewport">
+          <div class="review-track" id="reviewTrack"></div>
+        </div>
+
+        <button class="rev-arrow next" aria-label="Next review">→</button>
+        <div class="rev-dots" id="revDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIAL OFFERS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div class="eyebrow">Sweet deals</div>
+        <h2>Special Offers</h2>
+      </div>
+
+      <div class="offer-grid">
+        <div class="offer weekly">
+          <span class="tag">Weekly Special</span>
+          <h3>$5 Fridays</h3>
+          <p>Every Friday a rotating fan-favorite treat drops to just $5.</p>
+        </div>
+
+        <div class="offer holiday">
+          <span class="tag">Holiday Promo</span>
+          <h3>Carnival King Cakes</h3>
+          <p>Pre-order seasonal king cakes for every celebration.</p>
+        </div>
+
+        <div class="offer loyalty">
+          <span class="tag">Loyalty Reward</span>
+          <h3>Sweet Rewards</h3>
+          <p>
+            Earn points for every purchase.
+            <a href="rewards.html" style="text-decoration:underline;">Join free →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section">
+    <div class="wrap">
+      <div class="newsletter">
+        <div class="eyebrow" style="color:var(--gold)">Don't miss a drop</div>
+        <h2>Join the Fairy Mailing List</h2>
+        <p>Dessert drops, holiday boxes, and exclusive deals.</p>
+
+        <form name="newsletter" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="newsletter" />
+
+          <p class="hidden">
+            <label>Skip: <input name="bot-field" /></label>
+          </p>
+
+          <input type="email" name="email" placeholder="you@example.com" required />
+          <button type="submit" class="btn btn-gold">Sign Me Up</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer data-footer></footer>
+
+  <!-- FIXED + SAFE REVIEWS SCRIPT -->
+  <script>
+    var REVIEWS = [
+      { stars: 5, text: "The cookie skillet showed up still warm and the whole table fought over it.", who: "Tanya R.", where: "Gentilly" },
+      { stars: 5, text: "Dessert table for graduation was flawless.", who: "Marcus D.", where: "New Orleans East" },
+      { stars: 5, text: "Banana pudding cookie is dangerous.", who: "Brittany J.", where: "Algiers" },
+      { stars: 5, text: "Office brownies disappeared in 10 minutes.", who: "Priya N.", where: "CBD" },
+      { stars: 5, text: "Cupcakes tasted like real fruit.", who: "Yolanda B.", where: "Marigny" }
+    ];
+
+    var track = document.getElementById('reviewTrack');
+    var dotsWrap = document.getElementById('revDots');
+    var idx = 0;
+    var timer;
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>"']/g, function (m) {
+        return ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        })[m];
+      });
+    }
+
+    function go(n) {
+      idx = (n + REVIEWS.length) % REVIEWS.length;
+
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+
+      dotsWrap.querySelectorAll('button').forEach(function (d, i) {
+        d.classList.toggle('active', i === idx);
+        d.setAttribute('aria-pressed', i === idx);
+      });
+    }
+
+    REVIEWS.forEach(function (r, i) {
+      var slide = document.createElement('div');
+      slide.className = 'review-slide';
+      slide.innerHTML =
+        '<div class="review-card">' +
+          '<div class="stars">' + '★'.repeat(r.stars) + '</div>' +
+          '<blockquote>&ldquo;' + escapeHTML(r.text) + '&rdquo;</blockquote>' +
+          '<div class="who">' + r.who + '</div>' +
+          '<div class="where">' + r.where + ', New Orleans</div>' +
+        '</div>';
+
+      track.appendChild(slide);
+
+      var dot = document.createElement('button');
+      dot.setAttribute('aria-label', 'Go to review ' + (i + 1));
+      dot.setAttribute('aria-pressed', 'false');
+      dot.addEventListener('click', function () { go(i); });
+
+      dotsWrap.appendChild(dot);
+    });
+
+    document.querySelector('.rev-arrow.prev').addEventListener('click', function () {
+      go(idx - 1);
+    });
+
+    document.querySelector('.rev-arrow.next').addEventListener('click', function () {
+      go(idx + 1);
+    });
+
+    function startAuto() {
+      timer = setInterval(function () {
+        go(idx + 1);
+      }, 7000);
+    }
+
+    startAuto();
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') go(idx - 1);
+      if (e.key === 'ArrowRight') go(idx + 1);
+    });
+  </script>
+</body>
+</html>
