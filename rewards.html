@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet Rewards — NOLA Sweet Tooth Fairy</title>
+  <meta name="description" content="Join the NOLA Sweet Tooth Fairy Sweet Rewards program. Earn 1 point per $1, free dessert at 100 points, birthday rewards and member discounts." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+  <header data-nav></header>
+
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">Get rewarded for your sweet tooth</div>
+      <h1>Sweet Rewards Program</h1>
+      <p>Earn 1 point for every $1 you spend and unlock a free dessert after 100 points �� plus birthday treats and members-only perks.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" style="padding-top:8px;">
+    <div class="wrap">
+      <div class="section-title"><h2>How It Works</h2></div>
+
+      <div class="step-row">
+        <div class="step"><div class="num">1</div><h3>Join Free</h3><p>Create your free account in seconds — in store or online.</p></div>
+        <div class="step"><div class="num">2</div><h3>Earn Points</h3><p>Get 1 point for every $1 you spend on any order.</p></div>
+        <div class="step"><div class="num">3</div><h3>Hit 100</h3><p>Watch your points stack up with every sweet treat.</p></div>
+        <div class="step"><div class="num">4</div><h3>Treat Yourself</h3><p>Redeem 100 points for a free signature dessert.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBER PERKS -->
+  <section class="section" style="padding-top:8px;">
+    <div class="wrap">
+      <div class="section-title"><h2>Member Perks</h2></div>
+
+      <div class="perk-grid">
+        <div class="perk">
+          <h3>Free Dessert</h3>
+          <p>Redeem 100 points for a free signature treat of your choice.</p>
+        </div>
+        <div class="perk">
+          <h3>Birthday Rewards</h3>
+          <p>Double points all birthday week, plus a free cupcake on the day.</p>
+        </div>
+        <div class="perk">
+          <h3>Member Discounts</h3>
+          <p>Exclusive member-only pricing on weekly specials and pre-orders.</p>
+        </div>
+        <div class="perk">
+          <h3>Early Access</h3>
+          <p>First dibs on Dessert of the Month drops and holiday boxes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section class="section" style="padding-top:8px;">
+    <div class="wrap" style="max-width:620px;">
+      <div class="panel">
+        <h2>Create Your Free Account</h2>
+
+        <form id="rewardsForm">
+          <div class="grid-2">
+            <div class="field">
+              <label for="rname">Name</label>
+              <input id="rname" name="name" required />
+            </div>
+
+            <div class="field">
+              <label for="rbday">Birthday</label>
+              <input id="rbday" type="date" name="birthday" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="remail">Email</label>
+            <input id="remail" type="email" name="email" required />
+          </div>
+
+          <div class="field">
+            <label for="rphone">Phone</label>
+            <input id="rphone" type="tel" name="phone" />
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            Join Sweet Rewards
+          </button>
+
+          <p id="rewardMsg" class="note text-center" style="margin-top:10px;"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer data-footer></footer>
+
+  <script>
+    document.getElementById('rewardsForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var name = document.getElementById('rname').value.trim();
+      var email = document.getElementById('remail').value.trim();
+
+      if (!name || !email) return;
+
+      document.getElementById('rewardMsg').textContent =
+        "Welcome to Sweet Rewards, " + name + "! You're officially signed up 🍪";
+
+      this.reset();
+    });
+  </script>
+</body>
+</html>
