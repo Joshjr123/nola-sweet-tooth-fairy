@@ -1,0 +1,300 @@
+/* ===========================================================
+   NOLA Sweet Tooth Fairy — shared styles (optimized)
+   =========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Pacifico&display=swap');
+
+:root {
+  --pink: #ff69b4;
+  --pink-bg: #ef8fc2;
+  --cream: #fff5e6;
+  --choc: #5c4033;
+  --gold: #ffd700;
+  --ink: #3a2a25;
+  --white: #ffffff;
+  --shadow: 0 14px 38px rgba(92, 64, 51, 0.18);
+  --shadow-sm: 0 6px 16px rgba(92, 64, 51, 0.14);
+  --radius: 22px;
+  --maxw: 1160px;
+  --display: 'Fredoka', 'Trebuchet MS', sans-serif;
+  --script: 'Pacifico', cursive;
+  --body: 'Nunito', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  color: var(--ink);
+  line-height: 1.6;
+  background-color: var(--pink-bg);
+
+  /* Background kept but performance-safe note: consider moving to SVG file later */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg stroke-linecap='round' stroke-width='5'%3E%3Cline x1='14' y1='24' x2='30' y2='12' stroke='%23ff8c00'/%3E%3Cline x1='66' y1='16' x2='80' y2='30' stroke='%234caf50'/%3E%3Cline x1='118' y1='20' x2='132' y2='8' stroke='%23ffe600'/%3E%3Cline x1='28' y1='66' x2='42' y2='78' stroke='%232196f3'/%3E%3Cline x1='90' y1='60' x2='104' y2='48' stroke='%23ff69b4'/%3E%3Cline x1='130' y1='70' x2='116' y2='82' stroke='%23e0218a'/%3E%3Cline x1='10' y1='110' x2='24' y2='98' stroke='%23ffffff'/%3E%3Cline x1='60' y1='112' x2='74' y2='124' stroke='%23ff8c00'/%3E%3Cline x1='112' y1='118' x2='126' y2='106' stroke='%234caf50'/%3E%3Cline x1='44' y1='40' x2='58' y2='28' stroke='%23e0218a'/%3E%3Cline x1='140' y1='140' x2='126' y2='128' stroke='%232196f3'/%3E%3Cline x1='84' y1='98' x2='98' y2='110' stroke='%23ffe600'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(90deg, rgba(0,0,0,0.22), rgba(255,255,255,0.22));
+
+  background-attachment: fixed, fixed;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+/* Prevent layout overflow issues */
+button,
+.btn {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Focus accessibility improvement */
+.btn:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ===========================================================
+   Layout helpers
+   =========================================================== */
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* ===========================================================
+   Typography
+   =========================================================== */
+
+h1, h2, h3 {
+  font-family: var(--display);
+  line-height: 1.12;
+  margin: 0 0 .5em;
+  color: var(--choc);
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); font-weight: 600; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+
+.eyebrow {
+  font-family: var(--script);
+  color: var(--pink);
+  font-size: 1.3rem;
+  margin-bottom: .2em;
+  text-shadow: 0 2px 0 rgba(255,255,255,.6);
+}
+
+.section { padding: 70px 0; }
+.section-title { text-align: center; margin-bottom: 36px; }
+
+/* ===========================================================
+   Buttons
+   =========================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.02rem;
+
+  padding: 14px 30px;
+  border-radius: 999px;
+  border: 0;
+  text-decoration: none;
+
+  transition: transform .15s ease, box-shadow .15s ease, background .2s;
+}
+
+.btn-primary {
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(255,105,180,.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(255,105,180,.5);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--choc);
+  box-shadow: 0 10px 22px rgba(255,215,0,.4);
+}
+
+.btn-gold:hover { transform: translateY(-2px); }
+
+.btn-choc {
+  background: var(--choc);
+  color: var(--cream);
+}
+
+.btn-choc:hover { transform: translateY(-2px); }
+
+.btn-ghost {
+  background: rgba(255,255,255,.85);
+  color: var(--choc);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-ghost:hover { transform: translateY(-2px); }
+
+.btn-sm {
+  padding: 9px 18px;
+  font-size: .92rem;
+}
+
+/* ===========================================================
+   Cards / Panels
+   =========================================================== */
+
+.card {
+  background: var(--cream);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 2px solid rgba(255,255,255,.6);
+}
+
+.panel {
+  background: rgba(255,255,255,.92);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  border: 2px solid rgba(255,255,255,.7);
+}
+
+/* ===========================================================
+   About Page (FIXED responsiveness)
+   =========================================================== */
+
+.about-hero { text-align: center; padding-bottom: 10px; }
+
+.about-feature {
+  margin: 10px auto 30px;
+  max-width: 980px;
+}
+
+.about-feature img {
+  width: 100%;
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  border: 5px solid #fff;
+  max-height: 560px;
+  object-fit: cover;
+}
+
+/* FIX: safer mobile grid */
+.about-media-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.about-media-row img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  border: 4px solid #fff;
+}
+
+/* FIX: video scaling issues */
+.about-videos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.about-videos video {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  border: 4px solid #fff;
+  background: #000;
+
+  /* FIX: prevents bad cropping */
+  object-fit: contain;
+}
+
+/* MOBILE FIX */
+@media (max-width: 760px) {
+  .about-media-row { grid-template-columns: 1fr 1fr; }
+  .about-videos { grid-template-columns: 1fr; }
+}
+
+/* ===========================================================
+   Forms (improved UX consistency)
+   =========================================================== */
+
+.field { margin-bottom: 18px; }
+
+.field label {
+  display: block;
+  font-weight: 700;
+  color: var(--choc);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 2px solid #eecfe0;
+  font-family: var(--body);
+  font-size: 1rem;
+  background: #fff;
+  color: var(--ink);
+}
+
+.field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ===========================================================
+   Utility
+   =========================================================== */
+
+.text-center { text-align: center; }
+.mt-2 { margin-top: 1.4rem; }
+
+.hidden { display: none !important; }
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--choc);
+  color: var(--cream);
+  padding: 14px 24px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  z-index: 200;
+  font-weight: 700;
+  transition: transform .35s;
+  max-width: 90vw;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
